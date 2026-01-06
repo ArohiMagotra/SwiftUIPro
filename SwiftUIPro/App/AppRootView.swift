@@ -16,8 +16,9 @@ struct AppRootView: View {
                 Text("Dashboard")
                     .font(.largeTitle)
             } else {
-                Text("Login")
-                    .font(.largeTitle)
+                LoginView {
+                    appState.isAuthenticated = true
+                }
             }
         }
     }
