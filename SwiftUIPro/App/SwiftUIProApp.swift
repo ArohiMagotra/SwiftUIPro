@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct SwiftUIProApp: App {
-    @State private var appState = AppState()
-
+    @State private var coordinator = AppCoordinator()
+    
     var body: some Scene {
         WindowGroup {
             AppRootView()
-                .environment(appState)
+                .environment(coordinator)
         }
     }
 }

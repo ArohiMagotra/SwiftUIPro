@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct AppRootView: View {
-    @Environment(AppState.self) private var appState
+    @Environment(AppCoordinator.self) private var coordinator
 
     var body: some View {
-        NavigationStack {
-            if appState.isAuthenticated {
-                Text("Dashboard")
-                    .font(.largeTitle)
-            } else {
-                LoginView {
-                    appState.isAuthenticated = true
-                }
-            }
+        switch coordinator.appFlow {
+        case .auth:
+            AuthRootView()
+        case .main:
+            MainRootView()
         }
     }
 }
+
+#Preview {
+    AppRootView()
+        .environment(AppCoordinator())
+}
+
