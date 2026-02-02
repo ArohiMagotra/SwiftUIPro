@@ -19,7 +19,7 @@ struct PortfolioListView: View {
     var body: some View {
         List(portfolios) { portfolio in
             Button {
-                coordinator.showPortfolioDetail(id: portfolio.id)
+                //t@coordinator.showPortfolioDetail(id: portfolio.id)
             } label: {
                 PortfolioRow(model: portfolio)
             }

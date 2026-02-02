@@ -14,31 +14,13 @@ struct MainRootView: View {
         @Bindable var coordinator = coordinator
         
         NavigationStack(path: $coordinator.mainPath) {
-            PortfolioListView()
-                .navigationTitle("Portfolio")
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            coordinator.logout()
-                        } label: {
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
-                        }
+            MainTabView()
+                .navigationDestination(for: MainRoute.self) { route in
+                    switch route {
+                    case .placeDetail(let place):
+                        PlaceDetailView(place: place)
                     }
                 }
         }
-        .navigationDestination(for: MainRoute.self) { route in
-            switch route {
-            case .portfolioDetail(let id):
-               EmptyView()
-            }
-        }
     }
-}
-
-#Preview {
-    let coordinator = AppCoordinator()
-    coordinator.appFlow = .main
-    
-    return MainRootView()
-        .environment(coordinator)
 }

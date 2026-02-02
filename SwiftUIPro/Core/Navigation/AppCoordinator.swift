@@ -15,7 +15,7 @@ enum AuthRoute: Hashable, Codable {
 }
 
 enum MainRoute: Hashable, Codable {
-    case portfolioDetail(id: UUID)
+    case placeDetail(place: Place)
 }
 
 // MARK: - App Flow
@@ -50,8 +50,8 @@ final class AppCoordinator {
     
     // MARK: - Main Navigation
     
-    func showPortfolioDetail(id: UUID) {
-        mainPath.append(.portfolioDetail(id: id))
+    func showPlaceDetail(place: Place) {
+        mainPath.append(.placeDetail(place: place))
     }
     
     func dismissDetail() {
